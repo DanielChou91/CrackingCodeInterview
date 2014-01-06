@@ -18,7 +18,7 @@ public class Q5_1 {
 		int		new_n  =  n & (mask1 | mask2); 
 		
 		// 2. append i 0's at the end of m => new_m
-		int		new_m  =  m << i;		
+		int		new_m  =  m << i;	
 
 		// 3. return new_m & new_n
 		return new_m | new_n;
