@@ -3,7 +3,8 @@ package chapter5;
 public class Q5_3 {
 
 	public static void main ( String[] args ) {
-
+		System.out.println( isLastDigitOne(1));
+		System.out.println( isLastDigitOne(-1 << 1));
 	}
 	public static int smallestSuccessor( int n ) {
 		// get p, get c0 and c1
