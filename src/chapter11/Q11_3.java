@@ -4,7 +4,15 @@ package chapter11;
 public class Q11_3 {
 
 	public static void main (String[] args) {
+		System.out.println(search(new int[]{7,8,9,1,2,3,4,5}, 7)); 
+		System.out.println(search(new int[]{7,8,9,1,2,3,4,5}, 8)); 
+		System.out.println(search(new int[]{7,8,9,1,2,3,4,5}, 9)); 
+		System.out.println(search(new int[]{7,8,9,1,2,3,4,5}, 1)); 
+		System.out.println(search(new int[]{7,8,9,1,2,3,4,5}, 2)); 
 		System.out.println(search(new int[]{7,8,9,1,2,3,4,5}, 3)); 
+		System.out.println(search(new int[]{7,8,9,1,2,3,4,5}, 4)); 
+		System.out.println(search(new int[]{7,8,9,1,2,3,4,5}, 5)); 
+		System.out.println(search(new int[]{7,8,9,1,2,3,4,5}, 98)); 
 	}
 	public static int search(int[] arr, int tgt) {
 		/** arr is the result of a sorted int array
@@ -13,6 +21,9 @@ public class Q11_3 {
 		return searchHelper(arr, tgt, 0, arr.length-1);
 	}
 	public static int searchHelper(int[] arr, int tgt, int p, int r) {
+		if ( p > r) {
+			return -1;			
+		}
 		
 		int		m  =  (p + r) / 2;
 		int		valMid   =   arr[m];
