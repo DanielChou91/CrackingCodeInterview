@@ -85,7 +85,7 @@ public class Solution2 {
         }
         return n1;
     }
-    private static ListNode append (ListNode head, ListNode n) {
+    static ListNode append (ListNode head, ListNode n) {
         if ( head == null) {
             return n;
         }
