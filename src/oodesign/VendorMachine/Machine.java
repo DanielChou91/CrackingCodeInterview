@@ -21,17 +21,13 @@ public class Machine {
 		dollar_count   =  dollar;
 	}
 	
-	public void storeItemBucket(int idx, int count) {
-		if (  !isValidItem(idx) ) {
-			return;
-		}
+	public void storeItemBucket(int idx, int count) throws Exception {
+		isValidItem(idx);
 		Bucket  b  =  cache[idx];
 		b.store( count );
 	}
-	public WrapperMoney sellItemBucket(int idx, int count, WrapperMoney in) {
-		if ( !isValidItem(idx) ) {
-			return null;
-		}	
+	public WrapperMoney sellItemBucket(int idx, int count, WrapperMoney in) throws Exception {
+		isValidItem(idx);
 		Bucket  b  =  cache[idx];
 		int		diff = b.value * count - in.sum();
 		if (diff < 0 ) {
@@ -43,15 +39,23 @@ public class Machine {
 		return getChange(diff);
 	}
 	
-	public void addNewBucket(int idx, Bucket b) {
-		if ( !isValidItem(idx) ) {
-			return ;
-		}
+	public void addNewBucket(int idx, Bucket b) throws Exception {
+		testValidIndex( idx );
 		cache[idx] = b;
 	}
 	
-	private boolean isValidItem (int idx) {
-		return (idx >=0 && idx < size && cache[idx] != null);
+	private void testValidIndex( int idx ) throws Exception {
+		if ( idx <0 && idx >= size ) {
+			throw new InvalidItemIdException("Check Item Id!");
+		}
+	}
+	private void isValidItem (int idx) throws Exception {
+		if ( idx < 0 && idx >= size) {
+			throw new InvalidItemIdException("Check Item Id!");
+		}
+		if ( cache[idx] == null ) {
+			throw new SoldOutException("Sold Out!");
+		}
 	}
 	
 	private WrapperMoney getChange( int m ) {

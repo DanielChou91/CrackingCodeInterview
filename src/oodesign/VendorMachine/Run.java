@@ -16,6 +16,8 @@ public class Run {
 		for ( Foo e : lof) {
 			System.out.println( e );
 		}
+		Exception	e  =  new SoldOutException("asfasd");
+		System.out.println( e.getMessage() );
 	}
 
 }
