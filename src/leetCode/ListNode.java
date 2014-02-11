@@ -20,4 +20,15 @@ class ListNode {
 		sb.append("]");
 		return sb.toString();
 	}
+	
+	public void appendToTail( int value ) {
+		ListNode	n  =  new ListNode(value);
+		ListNode	iter = this;
+		
+		while ( iter.next != null ) {
+			iter = iter.next;
+		}
+		
+		iter.next = n;
+	}
 }
